@@ -1,0 +1,23 @@
+.login {
+  width: 300px;
+  margin: 100px auto;
+}
+
+.login h4 {
+  color: #888;
+  padding: 20px 10px;
+}
+
+.login input {
+  margin-bottom: 10px;
+}
+
+.dropdown-menu[data-bs-popper] {
+  right: 2%;
+  left: unset;
+  border: unset;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
