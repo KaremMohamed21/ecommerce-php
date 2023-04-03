@@ -3,22 +3,24 @@
   <form action="?action=update" method="POST">
     <div class="form-group mb-3">
       <label for="username">username</label>
-      <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp"
-        placeholder="Enter email" value="<?= $raw['username'] ?>">
+      <input type="text" class="form-control" id="username" name="username" autocomplete="false" required
+        aria-describedby="emailHelp" placeholder="Enter email" value="<?= $raw['username'] ?>">
     </div>
     <input type="hidden" name="id" value="<?= $userId ?>" />
     <div class="form-group mb-3">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="">
+      <input type="hidden" name="oldpassword" value="<?= $raw['password'] ?>" />
+      <input type="password" class="form-control" id="password" name="newpassword" placeholder="Password"
+        autocomplete="new-password">
     </div>
     <div class="form-group mb-3">
       <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required
         placeholder="Enter email" value="<?= $raw['email'] ?>">
     </div>
     <div class="form-group mb-3">
       <label for="full name">full name</label>
-      <input type="text" class="form-control" id="fullname" name="fullname" aria-describedby="emailHelp"
+      <input type="text" class="form-control" id="fullname" name="fullname" aria-describedby="emailHelp" required
         placeholder="Enter email" value="<?= $raw['full_name'] ?>">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

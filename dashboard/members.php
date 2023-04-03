@@ -19,8 +19,38 @@
   $userId = intval($_GET['userid']) or 0;
 
   switch ($action) {
+    // Manage Page ////////////////////////////////////////////////////////////////////////////////////////
+    case 'manage':
+      echo 'Manage Members Page';
+      break;
+
+    // Add Page ////////////////////////////////////////////////////////////////////////////////////////
     case 'add':
-      echo 'Welcome to add page';
+      include $temps . 'members/addMember.php';
+      break;
+
+    // Insert Page ////////////////////////////////////////////////////////////////////////////////////////
+    case 'insert':
+      echo '<h2 class="text-center">Update page</h2>';
+
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+        // Get data from the request
+        $username = $_POST['username'];
+        $password = sha1($_POST['password']);
+        $email    = $_POST['email'];
+        $name     = $_POST['fullname'];
+
+        // Handle the DB
+        $stmt = $conn->prepare("INSERT INTO users(username, password, email, full_name)
+                                VALUES(?,?,?,?)");
+        $stmt->execute([$username, $password, $email, $name]);
+
+        echo "<div class='container'><div class='alert alert-success'>" . $stmt->rowCount() . " Record Updated!</div></div>";
+
+      } else {
+        echo "You Can't reach directly";
+      }
       break;
 
     // Edit Page ////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +63,7 @@
       
       // render the page
       if ($count > 0) {
-        include $temps . 'editMember.php';
+        include $temps . 'members/editMember.php';
       } else {
         echo 'Bad Request';
       }
@@ -51,18 +81,21 @@
         $email    = $_POST['email'];
         $name     = $_POST['fullname'];
 
+        // update password logic
+        $password = empty($_POST['newpassword']) ? $_POST['oldpassword'] : sha1($_POST['newpassword']);
+        
         // Hand the DB
         $stmt = $conn->prepare("UPDATE users
-                                SET username = ?, email = ?, full_name = ?
+                                SET username = ?, email = ?, full_name = ?, password = ?
                                 WHERE id = ?");
-        $stmt->execute([$username, $email, $name, $id]);
+        $stmt->execute([$username, $email, $name, $password, $id]);
         echo $stmt->rowCount() . ' Record update';
 
       } else {
         echo "You Can't reach directly";
       }
-
       break;
+      
     default:
       echo 'Welcome to manage page';
   }
