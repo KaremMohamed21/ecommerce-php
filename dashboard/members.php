@@ -21,7 +21,15 @@
   switch ($action) {
     // Manage Page ////////////////////////////////////////////////////////////////////////////////////////
     case 'manage':
-      echo 'Manage Members Page';
+      // Get the data from the DB
+      $stmt = $conn->prepare("SELECT * 
+                              FROM users
+                              WHERE NOT id = 1");
+      $stmt->execute();
+      $rows = $stmt->fetchAll();
+
+      // Render the temp
+      include $temps . 'members/manageMember.php';
       break;
 
     // Add Page ////////////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +39,7 @@
 
     // Insert Page ////////////////////////////////////////////////////////////////////////////////////////
     case 'insert':
-      echo '<h2 class="text-center">Update page</h2>';
+      echo '<h2 class="text-center">Insert page</h2>';
 
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
@@ -95,7 +103,32 @@
         echo "You Can't reach directly";
       }
       break;
-      
+
+    // Delete page ////////////////////////////////////////////////////////////////////////////////////////
+    case 'delete':
+      // Check if there's user in the DB
+      $stmt = $conn->prepare("SELECT *
+                              FROM users
+                              WHERE id = ?");
+      $stmt->execute([$userId]);
+      $count = $stmt->rowCount();
+
+      // Delete the user
+      if ($count > 0) {
+        // Delete user from the DB
+        $stmt = $conn->prepare("DELETE FROM users
+                                WHERE id = :userid");
+        $stmt->bindParam(':userid', $userId);
+        $stmt->execute();
+
+        // Send response
+        echo "<div class='container'><div class='alert alert-danger'>" . $stmt->rowCount() . " Record Deleted!</div></div>";
+
+      } else {
+        echo 'There is no user with this id';
+      }
+      break;
+
     default:
       echo 'Welcome to manage page';
   }
