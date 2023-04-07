@@ -54,10 +54,10 @@
                                 VALUES(?,?,?,?)");
         $stmt->execute([$username, $password, $email, $name]);
 
-        echo "<div class='container'><div class='alert alert-success'>" . $stmt->rowCount() . " Record Updated!</div></div>";
+        redirectTo($stmt->rowCount(), 'success', "members.php?action=add");
 
       } else {
-        echo "You Can't reach directly";
+        redirectTo("You Can't reach directly", 'danger', "members.php?action=add");
       }
       break;
 
@@ -73,7 +73,7 @@
       if ($count > 0) {
         include $temps . 'members/editMember.php';
       } else {
-        echo 'Bad Request';
+        redirectTo("Bad Request", 'danger', "members.php?action=edit");
       }
       break;
 
@@ -97,10 +97,10 @@
                                 SET username = ?, email = ?, full_name = ?, password = ?
                                 WHERE id = ?");
         $stmt->execute([$username, $email, $name, $password, $id]);
-        echo $stmt->rowCount() . ' Record update';
+        redirectTo($stmt->rowCount(), 'success', "members.php?action=edit");
 
       } else {
-        echo "You Can't reach directly";
+        redirectTo("You Can't reach directly", 'danger', "members.php?action=edit");
       }
       break;
 
@@ -122,10 +122,10 @@
         $stmt->execute();
 
         // Send response
-        echo "<div class='container'><div class='alert alert-danger'>" . $stmt->rowCount() . " Record Deleted!</div></div>";
+        redirectTo($stmt->rowCount(), 'danger', "members.php?action=manage");
 
       } else {
-        echo 'There is no user with this id';
+        redirectTo("There's no user with this id", 'danger', "members.php?action=manage");
       }
       break;
 
