@@ -54,7 +54,7 @@
                                 VALUES(?,?,?,?)");
         $stmt->execute([$username, $password, $email, $name]);
 
-        redirectTo($stmt->rowCount(), 'success', "members.php?action=add");
+        redirectTo($stmt->rowCount() . ' Recored Updated', 'success', "members.php?action=add");
 
       } else {
         redirectTo("You Can't reach directly", 'danger', "members.php?action=add");
@@ -64,7 +64,7 @@
     // Edit Page ////////////////////////////////////////////////////////////////////////////////////////
     case 'edit':
        // Get date from the DB
-      $stmt = $conn->prepare("SELECT * FROM users WHERE id = ? AND group_id = 1 LIMIT 1");
+      $stmt = $conn->prepare("SELECT * FROM users WHERE id = ? LIMIT 1");
       $stmt->execute([$userId]);
       $raw = $stmt->fetch();
       $count = $stmt->rowCount();
@@ -73,7 +73,7 @@
       if ($count > 0) {
         include $temps . 'members/editMember.php';
       } else {
-        redirectTo("Bad Request", 'danger', "members.php?action=edit");
+        redirectTo("Bad Request", 'danger', "members.php?action=edit&userid=$userId");
       }
       break;
 
@@ -97,10 +97,10 @@
                                 SET username = ?, email = ?, full_name = ?, password = ?
                                 WHERE id = ?");
         $stmt->execute([$username, $email, $name, $password, $id]);
-        redirectTo($stmt->rowCount(), 'success', "members.php?action=edit");
+        redirectTo($stmt->rowCount() . ' Recored Updated', 'success', "members.php?action=edit");
 
       } else {
-        redirectTo("You Can't reach directly", 'danger', "members.php?action=edit");
+        redirectTo("You Can't reach directly", 'danger', "members.php?action=manage");
       }
       break;
 

@@ -19,7 +19,7 @@
               echo "<td>" . $row['username'] . "</td>";
               echo "<td>" . $row['email'] . "</td>";
               echo "<td>" . $row['full_name'] . "</td>";
-              echo "<td>" . " " . "</td>";
+              echo "<td>" . $row['created_at'] . "</td>";
               echo "<td>" .
                             "<a class='btn btn-light btn-sm' href='members.php?action=edit&userid=" . $row['id'] . "'>Edit</a> 
                              <a class='btn btn-outline-danger btn-sm confirm' href='members.php?action=delete&userid=" . $row['id'] . "'>Delete</a>" 

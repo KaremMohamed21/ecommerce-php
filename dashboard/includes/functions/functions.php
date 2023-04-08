@@ -13,13 +13,14 @@
   }
 
   // Redirect function after error
-  function redirectTo($errorMsg, $status, $url, $time = 3) {
+  function redirectTo($errorMsg, $status, $url = "dashboard.php", $time = 3) {
     echo "<div class='container'>
       <div class='alert alert-$status'>" . $errorMsg . "</div>
       <div class='alert alert-info'>You will be redirected after $time seconds</div>
     </div>";
 
-    header("refresh: $time;location: $url");
+    header("Refresh:$time; url=$url");
+    exit();
   }
 
   // Check item in the DB
