@@ -27,13 +27,23 @@
   function checkItem($select, $from, $value) {
     global $conn;
 
-    $stmt = $conn->prepare("SELECT ? FROM ? WHERE ? = ?");
-    $stmt->execute([$select, $from, $select, $value]);
-    $count = $stmt->rowCount();
-
-    if ($count > 0) {
+    $stmt1 = $conn->prepare("SELECT $select FROM $from WHERE $select = ?");
+    $stmt1->execute([$value]);
+    $count1 = $stmt1->rowCount();
+    
+    if ($count1 > 0) {
       return true;
     } 
 
     return false;
+  }
+
+  // Get item count from the DB
+  function getCount($column, $table) {
+    global $conn;
+
+    $stmt1 = $conn->prepare("SELECT COUNT($column) FROM $table");
+    $stmt1->execute();
+
+    return $stmt1->fetchColumn();
   }

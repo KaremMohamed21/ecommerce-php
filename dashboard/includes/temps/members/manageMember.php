@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="text-center">Manage Members</h2>
+  <h2 class="text-center h2">Manage Members</h2>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -29,4 +29,5 @@
     ?>
     </tbody>
   </table>
+  <a class="btn btn-outline-primary btn-lg" href="members.php?action=add">Add Member</a>
 </div>
