@@ -27,10 +27,8 @@
   function checkItem($select, $from, $value) {
     global $conn;
 
-    $stmt = $conn->prepare("SELECT $select
-                            FROM $from
-                            WHERE $select = $value");
-    $stmt->execute();
+    $stmt = $conn->prepare("SELECT ? FROM ? WHERE ? = ?");
+    $stmt->execute([$select, $from, $select, $value]);
     $count = $stmt->rowCount();
 
     if ($count > 0) {
