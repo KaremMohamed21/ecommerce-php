@@ -39,10 +39,10 @@
   }
 
   // Get item count from the DB
-  function getCount($column, $table) {
+  function getCount($column, $table, $where = '') {
     global $conn;
 
-    $stmt1 = $conn->prepare("SELECT COUNT($column) FROM $table");
+    $stmt1 = $conn->prepare("SELECT COUNT($column) FROM $table $where");
     $stmt1->execute();
 
     return $stmt1->fetchColumn();

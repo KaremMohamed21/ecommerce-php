@@ -20,10 +20,11 @@
               echo "<td>" . $row['email'] . "</td>";
               echo "<td>" . $row['full_name'] . "</td>";
               echo "<td>" . $row['created_at'] . "</td>";
-              echo "<td>" .
-                            "<a class='btn btn-light btn-sm' href='members.php?action=edit&userid=" . $row['id'] . "'>Edit</a> 
-                             <a class='btn btn-outline-danger btn-sm confirm' href='members.php?action=delete&userid=" . $row['id'] . "'>Delete</a>" 
-                          . "</td>";
+              echo "<td>" ;
+                          echo  "<a class='btn btn-light btn-sm' href='members.php?action=edit&userid=" . $row['id'] . "'>Edit</a>";
+                          echo  "<a class='btn btn-outline-danger btn-sm confirm' href='members.php?action=delete&userid=" . $row['id'] . "'>Delete</a> ";
+                          echo $row['status'] !== 1 ? " <a class='btn btn-outline-primary btn-sm' href='members.php?action=activate&userid=" . $row['id'] . "'>Activate</a>" : '';
+              echo "</td>";
             echo "</tr>";
           }
     ?>

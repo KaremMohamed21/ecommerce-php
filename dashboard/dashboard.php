@@ -33,7 +33,7 @@
     <div class="col-sm-3">
       <div class="card shadow-sm">
         <div class="card-body">
-          <h5 class="card-title"><?= getCount('id', 'users'); ?></h5>
+          <h5 class="card-title"><?= getCount('id', 'users', 'WHERE NOT status = 1'); ?></h5>
           <p class="card-text">Pending Members</p>
           <a href="members.php?action=manage&page=pending" class="btn btn-outline-primary">show</a>
         </div>

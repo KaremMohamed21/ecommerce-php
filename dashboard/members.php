@@ -44,6 +44,11 @@
       include 'pages/members/deleteMembers.php';
       break;
 
+    // Activate page ////////////////////////////////////////////////////////////////////////////////////////
+    case 'activate':
+      include 'pages/members/activateMembers.php';
+      break;
+
     // Manage Page ////////////////////////////////////////////////////////////////////////////////////////
     default:
       include 'pages/members/manageMembers.php';
