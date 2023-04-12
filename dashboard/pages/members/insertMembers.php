@@ -18,7 +18,7 @@
                               VALUES(?,?,?,?, 1)");
       $stmt->execute([$username, $password, $email, $name]);
 
-      redirectTo($stmt->rowCount() . ' Recored Updated', 'success', "members.php?action=add");
+      redirectTo($stmt->rowCount() . ' Recored Inserted', 'success', "members.php?action=add");
 
     } else {
       redirectTo("You Can't reach directly", 'danger', "members.php?action=add");

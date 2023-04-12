@@ -11,7 +11,7 @@
           <a class="nav-link" aria-current="page" href="dashboard.php"><?= lang('HOME') ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><?= lang('CATEGORIES') ?></a>
+          <a class="nav-link" href="categories.php"><?= lang('CATEGORIES') ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"><?= lang('ITEMS') ?></a>
