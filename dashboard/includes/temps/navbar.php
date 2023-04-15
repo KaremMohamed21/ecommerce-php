@@ -14,7 +14,7 @@
           <a class="nav-link" href="categories.php"><?= lang('CATEGORIES') ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><?= lang('ITEMS') ?></a>
+          <a class="nav-link" href="products.php"><?= lang('ITEMS') ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="members.php?action=manage"><?= lang('MEMBERS') ?></a>

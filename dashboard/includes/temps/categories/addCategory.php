@@ -8,7 +8,7 @@
     </div>
     <div class="form-group mb-3">
       <label for="description">Description</label>
-      <input type="text" class="form-control" id="description" description="description" autocomplete="false"
+      <input type="text" class="form-control" id="description" name="description" autocomplete="false"
         aria-describedby="emailHelp" placeholder="Enter Category description">
     </div>
     <div class="form-group mb-3">
