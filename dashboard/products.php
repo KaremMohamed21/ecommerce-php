@@ -50,8 +50,7 @@
 
     // Manage Page ////////////////////////////////////////////////////////////////////////////////////////
     default:
-      // include 'pages/members/manageMembers.php';
-      echo 'Welcome to Product manage';
+      include 'pages/products/manageProduct.php';
       break;
   }
   

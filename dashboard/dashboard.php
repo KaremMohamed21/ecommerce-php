@@ -42,9 +42,9 @@
     <div class="col-sm-3">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title"><?= getCount('id', 'products'); ?></h5>
+          <p class="card-text">Total Products</p>
+          <a href="products.php?action=manage" class="btn btn-outline-primary">show</a>
         </div>
       </div>
     </div>
